@@ -52,14 +52,18 @@
             width: 120px;
             height: 120px;
             margin: 0 auto 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 60px;
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         /* Header */
@@ -89,17 +93,16 @@
             line-height: 1.6;
         }
 
-        /* Buttons Container */
-        .buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: center;
             margin-top: 40px;
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 30px;
+            padding: 18px 40px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
@@ -139,20 +142,6 @@
             transform: translateY(-2px);
         }
 
-        /* Button Numbers */
-        .btn-number {
-            display: block;
-            font-size: 2rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .btn-text {
-            display: block;
-            font-size: 0.95rem;
-            opacity: 0.95;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -180,21 +169,11 @@
             .logo {
                 width: 100px;
                 height: 100px;
-                font-size: 50px;
-            }
-
-            .buttons-container {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
             }
 
             .btn {
-                padding: 15px 20px;
+                padding: 15px 30px;
                 font-size: 1rem;
-            }
-
-            .btn-number {
-                font-size: 1.8rem;
             }
         }
 
@@ -215,16 +194,10 @@
             .logo {
                 width: 80px;
                 height: 80px;
-                font-size: 40px;
-            }
-
-            .buttons-container {
-                grid-template-columns: 1fr;
-                gap: 12px;
             }
 
             .btn {
-                padding: 12px 15px;
+                padding: 12px 20px;
                 font-size: 0.95rem;
             }
 
@@ -239,9 +212,7 @@
         <!-- Logo Section -->
         <div class="logo-section">
             <div class="logo">
-                <!-- Aquí va el logo de la Universidad Tecnológica de la Selva -->
-                <!-- <img src="logo-universidad.png" alt="Logo Universidad" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"> -->
-                📚
+                <img src="logo.png" alt="Logo Universidad Tecnológica de la Selva">
             </div>
         </div>
 
@@ -251,26 +222,13 @@
 
         <!-- Description -->
         <p class="description">
-            Bienvenido al curso de inducción de comprensión lectora. Selecciona la semana que deseas revisar para continuar con el material educativo.
+            Bienvenido al curso de inducción de comprensión lectora. Selecciona la cápsula educativa de la semana que deseas revisar para continuar con el material educativo.
         </p>
 
-        <!-- Buttons -->
-        <div class="buttons-container">
-            <a href="Capsula%20Educativa%20-Semana%201.html" class="btn">
-                <span class="btn-number">1</span>
-                <span class="btn-text">Semana 1</span>
-            </a>
-            <a href="Capsula%20Educativa-Semana%202.html" class="btn">
-                <span class="btn-number">2</span>
-                <span class="btn-text">Semana 2</span>
-            </a>
-            <a href="Capsula%20Educativa-Semana%203.html" class="btn">
-                <span class="btn-number">3</span>
-                <span class="btn-text">Semana 3</span>
-            </a>
-            <a href="Capsula%20Educativa-Semana%204.html" class="btn">
-                <span class="btn-number">4</span>
-                <span class="btn-text">Semana 4</span>
+        <!-- Button -->
+        <div class="button-container">
+            <a href="Capsula%20Educativa-Semana.html" class="btn">
+                Cápsula Educativa de la Semana
             </a>
         </div>
 
