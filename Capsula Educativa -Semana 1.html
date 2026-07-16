@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominando el Acento - Universidad Tecnológica de la Selva</title>
+    
+    <!-- Importación de fuente desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de color y tipografía (Paleta de concentración y accesibilidad) */
+        :root {
+            --primary-dark: #0B1E36; /* Azul profundo */
+            --primary-light: #1A365D; /* Azul secundario */
+            --accent: #0D9488; /* Verde azulado vibrante */
+            --accent-hover: #0F766E;
+            --bg-color: #F8FAFC; /* Gris muy claro */
+            --surface-color: #FFFFFF;
+            --text-main: #334155; /* Gris oscuro para lectura */
+            --text-light: #64748B;
+            --border-color: #E2E8F0;
+            --success: #16A34A;
+            --error: #DC2626;
+            
+            --font-main: 'Poppins', sans-serif;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reseteo y Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Enfoque accesible para navegación por teclado */
+        *:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* Contenedor Principal (Una sola columna) */
+        main {
+            background-color: var(--surface-color);
+            max-width: 850px;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            padding: 3rem 4rem;
+            overflow: hidden;
+        }
+
+        /* Tipografía y Textos */
+        h1, h2, h3 {
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-light);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify; /* Justificado según requerimiento */
+            hyphens: auto;
+        }
+
+        strong {
+            color: var(--primary-dark);
+        }
+
+        /* Header e Introducción */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .uni-badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        /* Secciones */
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        /* Conceptos Fundamentales (Tarjetas) */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .concept-card {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            transition: var(--transition);
+        }
+
+        .concept-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .concept-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Ejemplos en Acción */
+        .example-box {
+            background-color: #F0FDF4; /* Fondo verde muy sutil */
+            border: 1px solid #BBF7D0;
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+        }
+
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-word {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-hover);
+        }
+
+        .example-type {
+            font-size: 0.85rem;
+            background-color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            color: var(--primary-light);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Actividad Interactiva (Quiz) */
+        .quiz-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-btn {
+            background-color: var(--surface-color);
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .quiz-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            background-color: #F0FDFA; /* Teal muy claro */
+            transform: scale(1.02);
+        }
+
+        .quiz-btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        .quiz-btn.correct {
+            background-color: #DCFCE7;
+            border-color: var(--success);
+            color: #15803D;
+        }
+
+        .quiz-btn.incorrect {
+            background-color: #FEE2E2;
+            border-color: var(--error);
+            color: #B91C1C;
+        }
+
+        .quiz-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-feedback.show-correct {
+            display: block;
+            background-color: #DCFCE7;
+            color: #15803D;
+            border-left: 4px solid var(--success);
+        }
+
+        .quiz-feedback.show-incorrect {
+            display: block;
+            background-color: #FEE2E2;
+            color: #B91C1C;
+            border-left: 4px solid var(--error);
+        }
+
+        .quiz-progress {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .next-btn {
+            margin-top: 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+            display: none; /* Oculto hasta responder */
+            float: right;
+        }
+
+        .next-btn:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.05);
+        }
+
+        .quiz-result {
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-result h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-result p {
+            text-align: center;
+        }
+
+        .restart-btn {
+            background-color: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .restart-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Utilidades SVGs (Iconos Inline) */
+        .icon {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-btn {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            main {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .example-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- CABECERA E INTRODUCCIÓN -->
+        <header>
+            <span class="uni-badge">Universidad Tecnológica de la Selva</span>
+            <h1>Dominando el Acento: El Secreto de la Claridad Escrita</h1>
+            <p class="intro-text">
+                ¡Bienvenidos, estudiantes de Comprensión Lectora! Aprender a acentuar correctamente va mucho más allá de memorizar reglas; es dominar la herramienta principal para comunicarte con precisión y profesionalismo. Una simple tilde puede cambiar radicalmente el significado de un mensaje (no es lo mismo "El público animó" que "Él publico ánimo"). En esta cápsula digital interactiva, exploraremos las reglas gramaticales de la acentuación para que tus ideas siempre transmitan exactamente lo que deseas.
+            </p>
+        </header>
+
+        <!-- SECCIÓN 1: CONCEPTOS FUNDAMENTALES -->
+        <section id="conceptos">
+            <h2>
+                <!-- Icono de Libro -->
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                1. Conceptos Fundamentales
+            </h2>
+            
+            <div class="concept-grid">
+                <article class="concept-card">
+                    <h3>1.1.1 Tipos de palabras según el acento</h3>
+                    <p>En español, todas las palabras tienen una sílaba tónica (la que suena con mayor fuerza). Según la posición de esta sílaba, las palabras se clasifican en: <strong>Agudas</strong> (última sílaba), <strong>Graves o llanas</strong> (penúltima), <strong>Esdrújulas</strong> (antepenúltima) y <strong>Sobresdrújulas</strong> (antes de la antepenúltima).</p>
+                </article>
+
+                <article class="concept-card">
+                    <h3>1.1.2 Reglas generales de acentuación</h3>
+                    <p>La tilde (´) es la marca gráfica del acento. ¿Cuándo se escribe? Las <strong>agudas</strong> llevan tilde si terminan en vocal, "n" o "s". Las <strong>graves</strong> llevan tilde si terminan en cualquier consonante que NO sea "n" ni "s". ¡Y las <strong>esdrújulas y sobresdrújulas</strong> llevan tilde siempre!</p>
+                </article>
+
+                <article class="concept-card">
+                    <h3>1.1.3 Diptongos, triptongos e hiatos</h3>
+                    <p>Las vocales fuertes son A, E, O y las débiles I, U. Un <strong>diptongo</strong> o <strong>triptongo</strong> une estas vocales en una sola sílaba, siguiendo las reglas generales. Sin embargo, el <strong>hiato</strong> ocurre cuando se separan en sílabas distintas. Si el hiato se forma por una vocal fuerte y una débil acentuada, la vocal débil SIEMPRE lleva tilde, rompiendo la regla general.</p>
+                </article>
+
+                <article class="concept-card">
+                    <h3>1.1.4 Acentuación diacrítica</h3>
+                    <p>Es la tilde que se utiliza para diferenciar palabras que se escriben exactamente igual, pero que pertenecen a categorías gramaticales diferentes y tienen significados distintos (ejemplo: "tu" pronombre posesivo vs. "tú" pronombre personal).</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: EJEMPLOS EN ACCIÓN -->
+        <section id="ejemplos">
+            <h2>
+                <!-- Icono de Estrella / Acción -->
+                <svg class="icon" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                2. Ejemplos en Acción
+            </h2>
+            <p>Veamos cómo la teoría cobra vida en las palabras que usamos todos los días en la universidad y en el entorno laboral:</p>
+
+            <article class="example-box">
+                <div class="example-header">
+                    <span class="example-word">Co-mu-ni-ca-ción</span>
+                    <span class="example-type">Regla General: Palabra Aguda</span>
+                </div>
+                <p>La mayor fuerza de voz está en la última sílaba ("ción"). Como termina en la letra "n", se aplica la regla general y debe llevar tilde en la vocal fuerte.</p>
+            </article>
+
+            <article class="example-box">
+                <div class="example-header">
+                    <span class="example-word">Ma-íz</span>
+                    <span class="example-type">Excepción: Hiato</span>
+                </div>
+                <p>Aunque es aguda y termina en "z" (no debería llevar tilde según la regla general), aquí encontramos una vocal abierta (a) junto a una cerrada tónica (i). El <strong>hiato</strong> obliga a poner tilde en la vocal cerrada (débil) para indicar que se separa en otra sílaba.</p>
+            </article>
+
+            <article class="example-box">
+                <div class="example-header">
+                    <span class="example-word">Él vs. El</span>
+                    <span class="example-type">Acento Diacrítico</span>
+                </div>
+                <p><em>"<strong>El</strong> profesor dijo que <strong>él</strong> entregaría las calificaciones hoy."</em><br> 
+                El primer "el" es un artículo (sin tilde), mientras que el segundo "él" es un pronombre personal que sustituye a una persona (con tilde). La tilde diacrítica evita la confusión.</p>
+            </article>
+        </section>
+
+        <!-- SECCIÓN 3: ACTIVIDAD INTERACTIVA -->
+        <section id="quiz">
+            <h2>
+                <!-- Icono de Rompecabezas / Juego -->
+                <svg class="icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                3. ¡Pon a Prueba tu Conocimiento!
+            </h2>
+            <p>Evalúa lo que has aprendido con este breve cuestionario interactivo. Selecciona la opción que consideres correcta para cada caso.</p>
+
+            <div class="quiz-container">
+                
+                <div id="quiz-ui">
+                    <div class="quiz-progress" id="quiz-progress">Pregunta 1 de 3</div>
+                    <div class="quiz-question" id="quiz-question">Cargando pregunta...</div>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Opciones generadas por JS -->
+                    </div>
+                    <div id="quiz-feedback" class="quiz-feedback"></div>
+                    <button class="next-btn" id="next-btn">Siguiente</button>
+                    <div style="clear:both;"></div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result">
+                    <h3>¡Cuestionario Completado!</h3>
+                    <p id="score-text">Has obtenido X de Y respuestas correctas.</p>
+                    <p id="score-message"></p>
+                    <button class="restart-btn" id="restart-btn">Intentar de nuevo</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- LOGICA JAVASCRIPT -->
+    <script>
+        // Datos del cuestionario
+        const questions = [
+            {
+                question: "¿Por qué la palabra 'Examen' NO lleva tilde?",
+                options: [
+                    "Porque es aguda y termina en 'n'.",
+                    "Porque es grave y termina en 'n' o 's'.",
+                    "Porque es una excepción a la regla de hiatos."
+                ],
+                correctIndex: 1,
+                feedbackCorrect: "¡Excelente! 'Examen' es una palabra grave (fuerza en 'xa'). La regla dicta que las graves NO llevan tilde si terminan en 'n', 's' o vocal.",
+                feedbackIncorrect: "Incorrecto. Recuerda: 'Exa-men' tiene la fuerza en la penúltima sílaba (grave). Las graves no llevan tilde si terminan en 'n', 's' o vocal. Sin embargo, su plural 'Exámenes' sí lleva porque se vuelve esdrújula."
+            },
+            {
+                question: "Identifica la oración con el uso correcto del acento diacrítico:",
+                options: [
+                    "Aún no he leído tu ensayo, pero tú debes enviarlo pronto.",
+                    "Aun no he leído tú ensayo, pero tu debes enviarlo pronto.",
+                    "Aún no he leído tú ensayo, pero tú debes enviarlo pronto."
+                ],
+                correctIndex: 0,
+                feedbackCorrect: "¡Perfecto! 'Aún' lleva tilde cuando significa 'todavía'. 'Tu' (sin tilde) es adjetivo posesivo (tu ensayo) y 'tú' (con tilde) es pronombre personal (tú debes).",
+                feedbackIncorrect: "Casi. Revisa bien: 'tu ensayo' indica posesión (no lleva tilde), mientras que 'tú debes' se refiere a la persona (sí lleva tilde)."
+            },
+            {
+                question: "En la palabra 'Biología', ¿por qué la vocal 'i' lleva tilde?",
+                options: [
+                    "Porque es una palabra esdrújula.",
+                    "Porque termina en vocal.",
+                    "Para marcar un hiato y deshacer el diptongo."
+                ],
+                correctIndex: 2,
+                feedbackCorrect: "¡Muy bien! Al colocar la tilde en la vocal débil 'i' (Bi-o-lo-gí-a), indicamos que suena fuerte y debe separarse de la 'a', creando un hiato que rompe la regla general.",
+                feedbackIncorrect: "No es correcto. Aunque es cierto que termina en vocal, el motivo de la tilde en la 'i' es romper la unión (diptongo) con la 'a', creando un hiato."
+            }
+        ];
+
+        // Estado de la aplicación
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        // Elementos del DOM
+        const uiContainer = document.getElementById('quiz-ui');
+        const resultContainer = document.getElementById('quiz-result');
+        const progressEl = document.getElementById('quiz-progress');
+        const questionEl = document.getElementById('quiz-question');
+        const optionsEl = document.getElementById('quiz-options');
+        const feedbackEl = document.getElementById('quiz-feedback');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const scoreText = document.getElementById('score-text');
+        const scoreMessage = document.getElementById('score-message');
+
+        // Función para cargar la pregunta
+        function loadQuestion() {
+            answered = false;
+            feedbackEl.className = 'quiz-feedback';
+            feedbackEl.style.display = 'none';
+            nextBtn.style.display = 'none';
+            optionsEl.innerHTML = '';
+
+            const currentQ = questions[currentQuestionIndex];
+            
+            progressEl.textContent = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+            questionEl.textContent = currentQ.question;
+
+            currentQ.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-btn';
+                btn.setAttribute('type', 'button');
+                btn.innerHTML = `<span>${option}</span>`;
+                
+                // Accesibilidad y manejo de eventos
+                btn.addEventListener('click', () => handleAnswer(index, btn));
+                
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        // Función para manejar la respuesta del usuario
+        function handleAnswer(selectedIndex, btnElement) {
+            if (answered) return;
+            answered = true;
+
+            const currentQ = questions[currentQuestionIndex];
+            const isCorrect = selectedIndex === currentQ.correctIndex;
+            const allBtns = optionsEl.querySelectorAll('.quiz-btn');
+
+            // Deshabilitar botones y mostrar estilo de correcto/incorrecto
+            allBtns.forEach((btn, idx) => {
+                btn.disabled = true;
+                
+                // Iconos SVG para añadir visualmente feedback dentro del botón
+                const checkIcon = `<svg class="icon icon-btn" viewBox="0 0 24 24" style="stroke: var(--success);"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                const crossIcon = `<svg class="icon icon-btn" viewBox="0 0 24 24" style="stroke: var(--error);"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+
+                if (idx === currentQ.correctIndex) {
+                    btn.classList.add('correct');
+                    btn.innerHTML += checkIcon;
+                } else if (idx === selectedIndex && !isCorrect) {
+                    btn.classList.add('incorrect');
+                    btn.innerHTML += crossIcon;
+                }
+            });
+
+            // Mostrar feedback explicativo
+            feedbackEl.style.display = 'block';
+            if (isCorrect) {
+                score++;
+                feedbackEl.textContent = currentQ.feedbackCorrect;
+                feedbackEl.className = 'quiz-feedback show-correct';
+            } else {
+                feedbackEl.textContent = currentQ.feedbackIncorrect;
+                feedbackEl.className = 'quiz-feedback show-incorrect';
+            }
+
+            // Cambiar texto del botón si es la última pregunta
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.textContent = "Ver Resultados";
+            } else {
+                nextBtn.textContent = "Siguiente";
+            }
+            nextBtn.style.display = 'block';
+            nextBtn.focus(); // Mover enfoque para accesibilidad
+        }
+
+        // Función para avanzar de pregunta o mostrar resultado final
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Función para mostrar pantalla de resultados
+        function showResults() {
+            uiContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            scoreText.textContent = `Has obtenido ${score} de ${questions.length} respuestas correctas.`;
+            
+            if (score === questions.length) {
+                scoreMessage.textContent = "¡Sobresaliente! Estás listo(a) para escribir con total claridad y profesionalismo en tus trabajos universitarios.";
+                scoreMessage.style.color = "var(--success)";
+            } else if (score >= questions.length / 2) {
+                scoreMessage.textContent = "¡Buen trabajo! Tienes una base sólida, repasa un poco los conceptos y serás un maestro de la ortografía.";
+            } else {
+                scoreMessage.textContent = "Te sugerimos releer la sección de Conceptos Fundamentales. ¡La práctica hace al maestro!";
+                scoreMessage.style.color = "var(--error)";
+            }
+            
+            restartBtn.focus();
+        }
+
+        // Función para reiniciar el cuestionario
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            uiContainer.style.display = 'block';
+            resultContainer.style.display = 'none';
+            loadQuestion();
+        }
+
+        // Event Listeners
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+
+        // Inicializar el quiz al cargar la página
+        window.onload = loadQuestion;
+
+    </script>
+</body>
+</html>
