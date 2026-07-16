@@ -90,9 +90,11 @@
 
         /* Button Container */
         .button-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin-top: 40px;
+            justify-items: center;
         }
 
         .btn {
@@ -111,6 +113,7 @@
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
             position: relative;
             overflow: hidden;
+            min-width: 280px;
         }
 
         .btn::before {
@@ -192,6 +195,7 @@
             .btn {
                 padding: 12px 20px;
                 font-size: 0.95rem;
+                min-width: auto;
             }
 
             .description {
@@ -218,10 +222,19 @@
             Bienvenido al curso de inducción de comprensión lectora. Selecciona la cápsula educativa de la semana que deseas revisar para continuar con el material educativo.
         </p>
 
-        <!-- Button -->
+        <!-- Buttons -->
         <div class="button-container">
             <a href="Capsula%20Educativa%20-Semana%201.html" class="btn">
-                Cápsula Educativa de la Semana
+                Semana 1
+            </a>
+            <a href="Capsula%20Educativa-Semana%202.html" class="btn">
+                Semana 2
+            </a>
+            <a href="Capsula%20Educativa-Semana%203.html" class="btn">
+                Semana 3
+            </a>
+            <a href="Capsula%20Educativa-Semana%204.html" class="btn">
+                Semana 4
             </a>
         </div>
 
